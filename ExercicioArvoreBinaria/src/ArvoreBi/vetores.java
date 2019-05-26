@@ -14,8 +14,8 @@ public class vetores {
 	CArvBin arvoreC = new CArvBin();
 	
 	public void crescente() {
-		for (int i = 0; i < 10000000; i++) {
-			for(int j =0; j < 10000000; j++) {
+		for (int i = 0; i < 10000; i++) {
+			for(int j =0; j < 10000; j++) {
 				if(vetorA[i] < vetorA[j]) {
 					int aux = vetorA [i];
 					vetorA[i] = vetorA[j];
@@ -23,14 +23,26 @@ public class vetores {
 				}
 			}
         }
-		for(int j =0; j < 10000000; j++) {
-			arvoreA.put(j,vetorA[j]);			
+		long tempoInicial = System.currentTimeMillis();
+		for(int j =0; j < 10000; j++) {
+			arvoreA.put(j,vetorA[j]);		
 		}		
+		long tempoFinal = System.currentTimeMillis();
+		long tempoInicialPesquisa = System.currentTimeMillis();
+		for(int j =0; j < 10000; j++) {
+			arvoreA.get(j);		
+		}		
+		long tempoFinalPesquisa = System.currentTimeMillis();
+		long tempoTotalInserir = tempoFinal-tempoInicial;
+		long tempoTotalPesquisa = tempoFinalPesquisa - tempoInicialPesquisa;
+       System.out.println("Crescente em milisegundos(Pesquisa)"+tempoTotalPesquisa);
+       System.out.println("Crescente em milisegundos(Inserção)"+tempoTotalInserir);
+	
 	}
 	
 	public void decrescente() {
-		for (int i = 0; i < 10000000; i++) {
-			for(int j =0; j < 10000000; j++) {
+		for (int i = 0; i < 10000; i++) {
+			for(int j =0; j < 10000; j++) {
 				if(vetorB[i] > vetorB[j]) {
 					int aux = vetorB [i];
 					vetorB[i] = vetorB[j];
@@ -38,16 +50,45 @@ public class vetores {
 				}
 			}   
         }
-		for(int j =0; j < 10000000; j++) {
+		long tempoInicial = System.currentTimeMillis();
+		for(int j =0; j < 10000; j++) {
+			
 			arvoreB.put(j,vetorA[j]);
 		}
+		long tempoFinal = System.currentTimeMillis();
+		
+		long tempoInicialPesquisa = System.currentTimeMillis();
+		for(int j =0; j < 10000; j++) {
+			arvoreA.get(j);		
+		}		
+		long tempoFinalPesquisa = System.currentTimeMillis();
+		long tempoTotalInserir = tempoFinal-tempoInicial;
+		long tempoTotalPesquisa = tempoFinalPesquisa - tempoInicialPesquisa;
+		 System.out.println("Decrescente em milisegundos(Pesquisa)"+tempoTotalPesquisa);
+	       System.out.println("Decrescente em milisegundos(Inserção)"+tempoTotalInserir);
+		
+	
 	}
 	public void random() {
 		int i = 0;
-		vetorC [i] = gerador.nextInt(9999999);
+		vetorC [i] = gerador.nextInt(9999);
+		long tempoInicial = System.currentTimeMillis();
+		for(int j =0; j < 10000; j++) {
 		
-		for(int j =0; j < 10000000; j++) {
 			arvoreC.put(j,vetorC[j]);
 		}
+		long tempoFinal = System.currentTimeMillis();
+		
+		long tempoInicialPesquisa = System.currentTimeMillis();
+		for(int j =0; j < 10000; j++) {
+			arvoreA.get(j);		
+		}		
+		long tempoFinalPesquisa = System.currentTimeMillis();
+		
+		long tempoTotalInserir = tempoFinal-tempoInicial;
+		long tempoTotalPesquisa = tempoFinalPesquisa - tempoInicialPesquisa;
+		System.out.println("Random em milisegundos(Pesquisa)"+tempoTotalPesquisa);
+	    System.out.println("Random em milisegundos(Inserção)"+tempoTotalInserir);
+		
 	}
 }
