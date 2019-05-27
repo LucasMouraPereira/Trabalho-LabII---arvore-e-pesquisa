@@ -7,5 +7,6 @@ public class main {
 	    v.crescente();
 	    v.decrescente();
 		v.random();
+		
 	}
 }

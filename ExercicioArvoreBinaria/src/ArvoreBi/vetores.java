@@ -13,6 +13,10 @@ public class vetores {
 	CArvBin arvoreB = new CArvBin();
 	CArvBin arvoreC = new CArvBin();
 	
+	CArvAvl arvoreAvlA = new CArvAvl();
+	CArvAvl arvoreAvlB = new CArvAvl();
+	CArvAvl arvoreAvlC = new CArvAvl();
+	
 	public void crescente() {
 		for (int i = 0; i < 10000; i++) {
 			for(int j =0; j < 10000; j++) {
@@ -25,18 +29,27 @@ public class vetores {
         }
 		long tempoInicial = System.currentTimeMillis();
 		for(int j =0; j < 10000; j++) {
-			arvoreA.put(j,vetorA[j]);		
+			arvoreA.put(j,vetorA[j]);
+			arvoreAvlA.calcularBalanceamento();
+			arvoreAvlA.verificaBalanceamento();
+			arvoreAvlA.printArvore(j);
+			while(true){
+				arvoreAvlA.inserir(j,vetorA[j]);
+				arvoreAvlA.calcularBalanceamento();
+				arvoreAvlA.verificaBalanceamento();
+				arvoreAvlA.printArvore(j);
+			}
 		}		
 		long tempoFinal = System.currentTimeMillis();
 		long tempoInicialPesquisa = System.currentTimeMillis();
 		for(int j =0; j < 10000; j++) {
-			arvoreA.get(j);		
+			arvoreA.get(j);
 		}		
 		long tempoFinalPesquisa = System.currentTimeMillis();
 		long tempoTotalInserir = tempoFinal-tempoInicial;
 		long tempoTotalPesquisa = tempoFinalPesquisa - tempoInicialPesquisa;
        System.out.println("Crescente em milisegundos(Pesquisa)"+tempoTotalPesquisa);
-       System.out.println("Crescente em milisegundos(Inserção)"+tempoTotalInserir);
+       System.out.println("Crescente em milisegundos(InserÃ§Ã£o)"+tempoTotalInserir);
 	
 	}
 	
@@ -54,6 +67,7 @@ public class vetores {
 		for(int j =0; j < 10000; j++) {
 			
 			arvoreB.put(j,vetorA[j]);
+			
 		}
 		long tempoFinal = System.currentTimeMillis();
 		
@@ -65,7 +79,7 @@ public class vetores {
 		long tempoTotalInserir = tempoFinal-tempoInicial;
 		long tempoTotalPesquisa = tempoFinalPesquisa - tempoInicialPesquisa;
 		 System.out.println("Decrescente em milisegundos(Pesquisa)"+tempoTotalPesquisa);
-	       System.out.println("Decrescente em milisegundos(Inserção)"+tempoTotalInserir);
+	       System.out.println("Decrescente em milisegundos(InserÃ§Ã£o)"+tempoTotalInserir);
 		
 	
 	}
@@ -88,7 +102,7 @@ public class vetores {
 		long tempoTotalInserir = tempoFinal-tempoInicial;
 		long tempoTotalPesquisa = tempoFinalPesquisa - tempoInicialPesquisa;
 		System.out.println("Random em milisegundos(Pesquisa)"+tempoTotalPesquisa);
-	    System.out.println("Random em milisegundos(Inserção)"+tempoTotalInserir);
+	    System.out.println("Random em milisegundos(InserÃ§Ã£o)"+tempoTotalInserir);
 		
 	}
 }

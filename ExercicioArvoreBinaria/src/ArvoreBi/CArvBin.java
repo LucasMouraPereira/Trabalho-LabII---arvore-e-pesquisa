@@ -113,6 +113,8 @@ public class CArvBin {
 	                else
 	                    System.out.println("Op��o de impress�o inv�lida.");
 	    }
+	    
+	    
 
 	    private int somaNosInt(CNo no)
 	    {
@@ -369,4 +371,6 @@ public class CArvBin {
 	    	return altura(no.esq) - altura(no.dir);
 	    }
 	 // Exercicio  E (Fim)
+	    
+	    
 }
